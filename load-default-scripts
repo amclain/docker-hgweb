@@ -1,0 +1,21 @@
+# Copy default files if they aren't provided by the host
+# in the shared folder.
+
+DEFAULTS_DIR='/etc/default/hgweb'
+HG_DIR='/var/hg'
+
+[ ! -f "$HG_DIR/repos" ] && mkdir "$HG_DIR/repos"
+
+for FILE in "add.php" "hgweb.config" "hgweb.cgi" "hgusers"
+do
+	[ ! -f "$HG_DIR/$FILE" ] && cp "$DEFAULTS_DIR/hg/$FILE" $HG_DIR
+done
+
+[ ! -f "/etc/apache2/sites-available/hg.conf" ] && cp "$DEFAULTS_DIR/apache/hg.conf" /etc/apache2/sites-available/
+
+# Set permissions.
+
+chown -R www-data:www-data /var/hg
+chmod 754 /var/hg/hgweb.cgi
+
+[ ! -f "/etc/apache2/sites-enabled/hg.conf" ] && a2ensite hg
