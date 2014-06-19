@@ -4,7 +4,7 @@ FROM ubuntu:14.04
 MAINTAINER Alex McLain <alex@alexmclain.com>
 
 RUN apt-get -qq update
-RUN apt-get -y install apache2 curl mercurial php5 php5-cli php5-mcrypt
+RUN apt-get -y install apache2 apache2-utils curl mercurial php5 php5-cli php5-mcrypt
 
 # TODO: Remove
 RUN apt-get -y install vim
