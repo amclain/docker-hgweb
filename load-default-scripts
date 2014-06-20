@@ -4,7 +4,7 @@
 DEFAULTS_DIR='/etc/default/hgweb'
 HG_DIR='/var/hg'
 
-[ ! -f "$HG_DIR/repos" ] && mkdir "$HG_DIR/repos"
+[ ! -d "$HG_DIR/repos" ] && mkdir -p "$HG_DIR/repos"
 
 for FILE in "add.php" "hgweb.config" "hgweb.cgi" "hgusers"
 do
