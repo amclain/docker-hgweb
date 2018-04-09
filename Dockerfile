@@ -1,14 +1,10 @@
 # http://mercurial.selenic.com/wiki/HgWebDirStepByStep#Directory_Structure
 
-FROM ubuntu:14.04
+FROM ubuntu:16.04
 MAINTAINER Alex McLain <alex@alexmclain.com>
 
 RUN apt-get -qq update
-RUN apt-get -y install apache2 apache2-utils curl mercurial php5 php5-cli php5-mcrypt
-
-# TODO: Remove
-RUN apt-get -y install vim
-RUN echo "colorscheme delek" > ~/.vimrc
+RUN apt-get -y install apache2 apache2-utils curl mercurial php php-cli php-mcrypt
 
 # Configure hgweb
 ADD hg/add.php      /etc/default/hgweb/hg/
