@@ -24,4 +24,4 @@ VOLUME /var/hg
 VOLUME /etc/apache2/sites-available
 EXPOSE 80
 
-CMD load-default-scripts && service apache2 start && /bin/bash
+CMD load-default-scripts && service apache2 reload; apache2ctl -DFOREGROUND
